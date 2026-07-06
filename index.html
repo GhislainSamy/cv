@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GHISLAIN_SAMY // Administrateur Systèmes & Réseaux</title>
+<title>Ghislain Samy — Administrateur Systèmes & Réseaux</title>
+<meta name="description" content="Portfolio de Ghislain Samy, Administrateur Systèmes & Réseaux chez Atos. Linux (AlmaLinux, Debian, Ubuntu), réseau Cisco/Fortinet/pfSense, virtualisation Proxmox. Île-de-France.">
+<meta property="og:title" content="Ghislain Samy — Administrateur Systèmes & Réseaux">
+<meta property="og:description" content="Linux · Réseau Cisco/Fortinet/pfSense · Virtualisation Proxmox · 5+ ans d'expérience. En poste chez Atos, Île-de-France.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<!-- À compléter une fois le site hébergé : -->
+<!-- <meta property="og:url" content="https://TON-DOMAINE/"> -->
+<!-- <meta property="og:image" content="https://TON-DOMAINE/preview.png"> (1200x630px recommandé) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050a0e'/%3E%3Cpath d='M8 0h56v56z' fill='none'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='30' font-weight='bold' fill='%235ef6ff' text-anchor='middle'%3EGS%3C/text%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23ff003c' stroke-width='3'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root{
   --cyan:#5ef6ff; --cyan-dim:#1c8a9e;
   --red:#ff003c; --red-soft:#f75049;
   --yellow:#fcee0a;
-  --bg:#050a0e; --panel:rgba(10,20,28,.88); --panel-line:#12303d;
+  --bg:#050a0e; --panel:rgba(10,20,28,.94); --panel-line:#12303d;
   --text:#c8e9f0;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -19,12 +28,9 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;ov
 .mono{font-family:'Share Tech Mono',monospace}
 
 /* ====== FX GLOBAUX ====== */
-#bgfx{position:fixed;inset:0;z-index:0;display:block}
+#bgfx{position:fixed;inset:0;z-index:0;display:block;will-change:transform;transform:translateZ(0)}
 .fx-scan{position:fixed;inset:0;pointer-events:none;z-index:9000;
   background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
-.fx-flicker{position:fixed;inset:0;pointer-events:none;z-index:9001;
-  background:rgba(94,246,255,.02);animation:flick 4s steps(2) infinite}
-@keyframes flick{0%,97%{opacity:1}98%{opacity:.4}99%{opacity:.9}100%{opacity:1}}
 .fx-vignette{position:fixed;inset:0;pointer-events:none;z-index:8999;
   background:radial-gradient(ellipse at center,transparent 55%,rgba(0,10,15,.6) 100%)}
 
@@ -74,20 +80,19 @@ body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;ov
 #netrunner{display:none;position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:2rem 1.2rem 4.5rem}
 body.mode-net #netrunner{display:block}
 .hud-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--panel-line);
-  padding-bottom:.6rem;margin-bottom:1.6rem;font-size:.72rem;color:var(--cyan-dim);letter-spacing:.15em;flex-wrap:wrap;gap:.4rem}
+  padding-bottom:.6rem;margin-bottom:1.6rem;font-size:.8rem;color:var(--cyan-dim);letter-spacing:.15em;flex-wrap:wrap;gap:.4rem}
 .hud-top .live{color:var(--red);animation:blink 1.2s steps(1) infinite}
 @keyframes blink{50%{opacity:.15}}
-.panel{position:relative;background:var(--panel);border:1px solid var(--panel-line);margin-bottom:1.6rem;padding:1.4rem 1.6rem;
-  clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
-  backdrop-filter:blur(2px)}
+.panel{position:relative;background:var(--panel);border:1px solid var(--panel-line);margin-bottom:2rem;padding:1.8rem 2rem;
+  clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px)}
 .panel::before{content:"";position:absolute;top:0;left:0;width:60px;height:3px;background:var(--red)}
-.panel h2{color:var(--cyan);font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.panel h2{color:var(--cyan);font-size:1.1rem;letter-spacing:.3em;margin-bottom:1.2rem;text-transform:uppercase;display:flex;align-items:center;gap:.6rem}
 .panel h2::before{content:"▶";color:var(--red);font-size:.7rem}
-.tag{font-size:.68rem;color:var(--red-soft);letter-spacing:.12em}
+.tag{font-size:.75rem;color:var(--red-soft);letter-spacing:.12em}
 /* scroll reveal */
 .rv{opacity:0;transform:translateY(34px)}
 .rv.in{opacity:1;transform:none;transition:opacity .7s,transform .7s cubic-bezier(.2,.9,.25,1)}
-.rv.in::after{content:"";position:absolute;inset:0;background:var(--cyan);opacity:0;animation:decrypt .45s steps(4)}
+.rv.in::after{content:"";position:absolute;inset:0;background:var(--cyan);opacity:0;animation:decrypt .45s steps(4);pointer-events:none}
 @keyframes decrypt{0%{opacity:.25}30%{opacity:.05}60%{opacity:.18}100%{opacity:0}}
 
 .id-grid{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:center}
@@ -98,11 +103,11 @@ body.mode-net #netrunner{display:block}
 .avatar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(94,246,255,.08) 0 2px,transparent 2px 4px)}
 .id-name{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:700;letter-spacing:.05em;color:#fff;text-transform:uppercase}
 .id-name em{font-style:normal;color:var(--red)}
-.id-role{color:var(--cyan);letter-spacing:.22em;text-transform:uppercase;font-size:.85rem;margin:.3rem 0 .8rem}
-.id-meta{font-size:.75rem;color:var(--cyan-dim);display:flex;gap:1.4rem;flex-wrap:wrap}
+.id-role{color:var(--cyan);letter-spacing:.22em;text-transform:uppercase;font-size:1rem;margin:.3rem 0 .8rem}
+.id-meta{font-size:.85rem;color:var(--cyan-dim);display:flex;gap:1.4rem;flex-wrap:wrap}
 
-.skill{margin-bottom:.9rem}
-.skill .lbl{display:flex;justify-content:space-between;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.skill{margin-bottom:1.1rem}
+.skill .lbl{display:flex;justify-content:space-between;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
 .skill .lbl b{color:var(--cyan)}
 .bar{height:10px;background:#08141b;border:1px solid var(--panel-line);position:relative;overflow:hidden}
 .bar i{position:absolute;inset:0;transform-origin:left;background:
@@ -113,28 +118,84 @@ body.mode-net #netrunner{display:block}
 .skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 2.4rem}
 @media(max-width:640px){.skills-cols{grid-template-columns:1fr}.id-grid{grid-template-columns:1fr;text-align:center}.avatar{margin:0 auto}.id-meta{justify-content:center}}
 
-.job{border-left:2px solid var(--panel-line);padding:0 0 1.4rem 1.3rem;position:relative}
+.job{border-left:2px solid var(--panel-line);padding:0 0 1.8rem 1.4rem;position:relative}
 .job:last-child{padding-bottom:0}
 .job::before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;background:var(--bg);border:2px solid var(--red);transform:rotate(45deg)}
 .job.now::before{border-color:var(--yellow);box-shadow:0 0 10px rgba(252,238,10,.5)}
-.job h3{color:#fff;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase}
-.job .corp{color:var(--cyan);font-size:.8rem;letter-spacing:.15em}
-.job .date{font-size:.7rem;color:var(--red-soft);letter-spacing:.12em;margin:.15rem 0 .45rem}
+.job h3{color:#fff;font-size:1.2rem;letter-spacing:.06em;text-transform:uppercase}
+.job .corp{color:var(--cyan);font-size:.92rem;letter-spacing:.15em}
+.job .date{font-size:.8rem;color:var(--red-soft);letter-spacing:.12em;margin:.15rem 0 .45rem}
 .job .date .now-tag{color:var(--yellow);border:1px solid rgba(252,238,10,.4);padding:0 .4em;margin-left:.5em}
-.job ul{list-style:none;font-size:.88rem;line-height:1.55}
+.job ul{list-style:none;font-size:1rem;line-height:1.65}
 .job li::before{content:"» ";color:var(--red)}
 
 .chips{display:flex;flex-wrap:wrap;gap:.5rem}
-.chip{font-size:.72rem;letter-spacing:.1em;border:1px solid var(--cyan-dim);color:var(--cyan);padding:.3rem .7rem;
+.chip{font-size:.82rem;letter-spacing:.1em;border:1px solid var(--cyan-dim);color:var(--cyan);padding:.3rem .7rem;
   clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
 .chip.warn{border-color:#6e1626;color:var(--red-soft)}
-.switch-btn{position:fixed;bottom:1.2rem;right:1.2rem;z-index:6000}
+.ats-btn-wrap{position:fixed;top:1rem;right:1.2rem;z-index:6500;display:none;will-change:transform;
+  animation:atsScale 1.5s ease-in-out infinite}
+body.mode-net .ats-btn-wrap{display:block}
+@keyframes atsScale{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+.ats-link{position:relative;display:block;color:#050a0e;border:1px solid #fff;background:#fff;font-weight:700;
+  padding:.6rem 1.3rem;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  overflow:hidden;
+  animation:atsFlash 1.5s ease-in-out infinite}
+@keyframes atsFlash{
+  0%,100%{background:#fff;color:#050a0e}
+  50%{background:var(--cyan);color:#020608}}
+.ats-link::after{content:"";position:absolute;top:0;bottom:0;width:45%;left:-60%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.9),transparent);
+  animation:atsShine 1.5s ease-in-out infinite}
+@keyframes atsShine{0%,40%{left:-60%}85%,100%{left:130%}}
+.ats-btn-wrap:hover,.ats-btn-wrap:focus-within{animation:none;transform:scale(1.12)}
+.ats-btn-wrap:hover .ats-link,.ats-btn-wrap:focus-within .ats-link{animation:none;background:var(--cyan)}
+.ats-link:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+
+/* ====== V2 : nav ancrée, statut, stacks, contact ====== */
+.hud-nav{display:flex;gap:1.5rem;flex-wrap:wrap;margin:-0.6rem 0 2rem;font-size:.85rem;letter-spacing:.18em}
+.hud-nav a{color:var(--cyan-dim);text-decoration:none;text-transform:uppercase;transition:.15s}
+.hud-nav a::before{content:"▸ ";color:var(--red)}
+.hud-nav a:hover,.hud-nav a:focus-visible{color:var(--cyan);text-shadow:0 0 10px rgba(94,246,255,.6)}
+.status{font-size:.8rem;color:var(--yellow);letter-spacing:.16em;margin:-.35rem 0 .75rem;display:flex;align-items:center;gap:.5rem}
+.status .dot{width:7px;height:7px;background:var(--yellow);border-radius:50%;box-shadow:0 0 8px var(--yellow);animation:blink 1.4s steps(1) infinite}
+.stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+.stack .chip{font-size:.72rem;padding:.18rem .6rem;color:var(--cyan-dim);border-color:var(--panel-line)}
+.cta-row{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.4rem}
+a.proto-btn{text-decoration:none;display:inline-block;text-align:center}
+@media(max-width:640px){.status{justify-content:center}.cta-row{justify-content:center}}
+
+/* ====== Outils open source : chips à survol ====== */
+.tool-wrap{position:relative;display:inline-block}
+.tool-chip{cursor:help;border-color:var(--cyan-dim);color:var(--cyan);display:inline-block}
+.tool-chip::before{content:"+ ";color:var(--red)}
+.tool-wrap::after{content:attr(data-tools);position:absolute;bottom:calc(100% + 10px);left:50%;
+  transform:translateX(-50%) translateY(6px);background:#08141b;border:1px solid var(--cyan);color:var(--text);
+  padding:.5rem .9rem;font-size:.82rem;letter-spacing:.06em;white-space:nowrap;font-family:'Share Tech Mono',monospace;
+  opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:50;box-shadow:0 0 18px rgba(94,246,255,.3)}
+.tool-wrap::before{content:"";position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%) rotate(45deg);
+  width:9px;height:9px;background:#08141b;border-right:1px solid var(--cyan);border-bottom:1px solid var(--cyan);
+  opacity:0;pointer-events:none;transition:opacity .18s;z-index:51}
+.tool-wrap:hover .tool-chip,.tool-wrap:focus-within .tool-chip{background:rgba(94,246,255,.08);border-color:var(--cyan)}
+.tool-wrap:hover::after,.tool-wrap:focus-within::after,
+.tool-wrap:hover::before,.tool-wrap:focus-within::before{opacity:1}
+.tool-wrap:hover::after,.tool-wrap:focus-within::after{transform:translateX(-50%) translateY(0)}
+@media(max-width:640px){.tool-wrap::after{white-space:normal;width:max-content;max-width:74vw;left:0;transform:translateY(6px)}
+.tool-wrap:hover::after,.tool-wrap:focus-within::after{transform:translateY(0)}}
+
+/* ====== Compétences par domaine ====== */
+.sk-group{margin-bottom:1.3rem}
+.sk-lbl{color:#fff;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.sk-lbl::before{content:"■ ";color:var(--red);font-size:.7em;vertical-align:middle}
+.soft-row{border-top:1px dashed var(--panel-line);margin-top:.5rem;padding-top:1.1rem}
+.chip.soft{border-color:#3d3d16;color:var(--yellow)}
 
 /* ====== ATS ====== */
 #ats{display:none;position:relative;z-index:1;background:#fff;color:#1a1a1a;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
 body.mode-ats{background:#e8e8e8}
 body.mode-ats #ats{display:block}
-body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body.mode-ats #bgfx{display:none}
+body.mode-ats .fx-scan,body.mode-ats .fx-vignette,body.mode-ats #bgfx{display:none}
 .ats-wrap{max-width:800px;margin:2rem auto;background:#fff;padding:3rem;box-shadow:0 2px 14px rgba(0,0,0,.15)}
 .ats-wrap h1{font-size:1.9rem}
 .ats-wrap .ats-role{font-size:1.05rem;color:#444;margin:.2rem 0 .6rem}
@@ -151,7 +212,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
 @media(max-width:640px){.ats-wrap{padding:1.6rem;margin:1rem}}
 
 @media (prefers-reduced-motion: reduce){
-  .glitch::before,.glitch::after,.fx-flicker,.hud-top .live{animation:none!important}
+  .glitch::before,.glitch::after,.hud-top .live{animation:none!important}
   .bar i,.rv,.rv.in{transition:none!important}
   .rv{opacity:1;transform:none}
   #bgfx{display:none}
@@ -162,9 +223,9 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
 
 <canvas id="bgfx"></canvas>
 <div class="fx-scan"></div>
-<div class="fx-flicker"></div>
 <div class="fx-vignette"></div>
 <div id="wipe"></div>
+<div class="ats-btn-wrap"><a class="ats-link mono" href="#ats" target="_blank" rel="noopener">Format ATS ↗</a></div>
 
 <!-- ============ JACK-IN ============ -->
 <div id="jackin">
@@ -173,11 +234,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
   <div id="access" class="mono">ACCÈS AUTORISÉ</div>
   <div id="introTitle" style="text-align:center">
     <h1 class="glitch" data-txt="GHISLAIN_SAMY">GHISLAIN_SAMY</h1>
-    <div class="landing-sub mono" style="margin-top:.6rem">// sélectionnez le protocole d'affichage //</div>
-  </div>
-  <div id="protoRow">
-    <button class="proto-btn" onclick="setMode('ats')">Format ATS<small>lisible · imprimable · recruteur-friendly</small></button>
-    <button class="proto-btn red" onclick="setMode('net')">Format Netrunner<small>full HUD · accès non corporatif</small></button>
+    <div class="landing-sub mono" style="margin-top:.6rem">// initialisation interface netrunner //</div>
   </div>
 </div>
 
@@ -188,6 +245,9 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
     <span class="live">● REC</span>
     <span>UPLINK: FR-IDF</span>
   </div>
+  <nav class="hud-nav mono">
+    <a href="#profil">Profil</a><a href="#skills">Compétences</a><a href="#exp">Expérience</a><a href="#formations">Formations</a><a href="#contact">Contact</a>
+  </nav>
 
   <section class="panel rv">
     <div class="id-grid">
@@ -195,37 +255,51 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
       <div>
         <div class="id-name">Ghislain <em>SAMY</em></div>
         <div class="id-role">Administrateur Systèmes & Réseaux</div>
+        <div class="status mono"><span class="dot"></span>EN POSTE @ ATOS · OUVERT AUX OPPORTUNITÉS</div>
         <div class="id-meta mono">
-          <span>LOC: Île-de-France</span><span>MAIL: ghislain.samy@gmail.com</span><span>LANG: FR / EN</span>
+          <span>LOC: Île-de-France</span><span>MAIL: ghislain.samy@gmail.com</span><span><a href="https://fr.linkedin.com/in/ghislain-samy-884405150" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">IN: /ghislain-samy ↗</a></span><span>LANG: FR / EN</span><span>PERMIS: B · A2</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="panel rv">
+  <section id="profil" class="panel rv">
     <h2 data-scramble>Profil <span class="tag mono">//bio.dat</span></h2>
-    <p style="font-size:.95rem;line-height:1.6">Administrateur Systèmes & Réseaux chez Atos. Spécialisé dans les environnements Linux (AlmaLinux, Debian, Ubuntu), l'administration réseau multi-constructeurs (Cisco, Fortinet, pfSense) et la virtualisation Proxmox. Plus de 5 ans de terrain, une exigence : des infrastructures fiables, documentées et maîtrisées. Veille et expérimentation continues au sein d'un environnement de lab personnel.</p>
+    <p style="font-size:1.08rem;line-height:1.7">Administrateur Systèmes & Réseaux chez Atos. Spécialisé dans les environnements Linux (AlmaLinux, Debian, Ubuntu), l'administration réseau multi-constructeurs (Cisco, Fortinet, pfSense) et la virtualisation Proxmox. Plus de 5 ans de terrain, une exigence : des infrastructures fiables, documentées et maîtrisées. Veille et expérimentation continues au sein d'un environnement de lab personnel.</p>
   </section>
 
-  <section class="panel rv">
+  <section id="skills" class="panel rv">
     <h2 data-scramble>Compétences <span class="tag mono">//skills.sys</span></h2>
     <div class="skills-cols">
       <div>
-        <div class="skill"><div class="lbl"><span>Linux (Alma · Debian · Ubuntu)</span><b>90%</b></div><div class="bar"><i style="--v:.90"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Réseau (Cisco · FortiGate · pfSense)</span><b>82%</b></div><div class="bar"><i style="--v:.82"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Windows Server (AD · DNS · DHCP · WSUS)</span><b>85%</b></div><div class="bar"><i style="--v:.85"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Virtualisation (Proxmox · PBS)</span><b>88%</b></div><div class="bar"><i style="--v:.88"></i></div></div>
+        <div class="sk-group"><div class="sk-lbl">Systèmes Linux</div>
+          <div class="chips"><span class="chip">AlmaLinux</span><span class="chip">Debian</span><span class="chip">Ubuntu</span></div></div>
+        <div class="sk-group"><div class="sk-lbl">Systèmes Windows</div>
+          <div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">DNS · DHCP</span><span class="chip">WSUS</span></div></div>
+        <div class="sk-group"><div class="sk-lbl">Réseau & Sécurité</div>
+          <div class="chips"><span class="chip warn">Cisco</span><span class="chip warn">FortiGate</span><span class="chip warn">pfSense</span></div></div>
       </div>
       <div>
-        <div class="skill"><div class="lbl"><span>Scripting Bash</span><b>84%</b></div><div class="bar red"><i style="--v:.84"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Scripting PowerShell</span><b>78%</b></div><div class="bar red"><i style="--v:.78"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Docker</span><b>72%</b></div><div class="bar red"><i style="--v:.72"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Apache / Services Web</span><b>75%</b></div><div class="bar red"><i style="--v:.75"></i></div></div>
+        <div class="sk-group"><div class="sk-lbl">Virtualisation</div>
+          <div class="chips"><span class="chip">Proxmox VE</span><span class="chip">Proxmox Backup Server</span></div></div>
+        <div class="sk-group"><div class="sk-lbl">Scripting & Automatisation</div>
+          <div class="chips"><span class="chip">Bash</span><span class="chip">PowerShell</span></div></div>
+        <div class="sk-group"><div class="sk-lbl">Conteneurs & Services Web</div>
+          <div class="chips"><span class="chip">Docker</span><span class="chip">Apache</span></div></div>
+      </div>
+    </div>
+    <div class="soft-row">
+      <div class="sk-lbl" style="margin-bottom:.6rem">// Soft skills</div>
+      <div class="chips">
+        <span class="chip soft">Pédagogie — formation de collaborateurs</span>
+        <span class="chip soft">Documentation technique</span>
+        <span class="chip soft">Priorisation des incidents</span>
+        <span class="chip soft">Communication avec les utilisateurs</span>
       </div>
     </div>
   </section>
 
-  <section class="panel rv">
+  <section id="exp" class="panel rv">
     <h2 data-scramble>Expérience <span class="tag mono">//log.history</span></h2>
     <div class="job now">
       <h3>Administrateur Systèmes & Réseaux</h3>
@@ -236,6 +310,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Administration réseau : équipements Cisco, pare-feu Fortinet & pfSense</li>
         <li>Exploitation et maintien en condition opérationnelle des infrastructures</li>
       </ul>
+      <div class="stack"><span class="chip">AlmaLinux</span><span class="chip">Debian</span><span class="chip">Ubuntu</span><span class="chip">Cisco</span><span class="chip">FortiGate</span><span class="chip">pfSense</span></div>
     </div>
     <div class="job">
       <h3>Technicien Système</h3>
@@ -246,6 +321,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Conception d'un environnement Proxmox avec sauvegardes incrémentielles (Proxmox Backup Server) pour les tests du produit AFI-Multimédia</li>
         <li>Formation des collaborateurs aux outils et bonnes pratiques</li>
       </ul>
+      <div class="stack"><span class="chip">Active Directory</span><span class="chip">Proxmox VE</span><span class="chip">Proxmox Backup Server</span><span class="chip">Windows Server</span></div>
     </div>
     <div class="job">
       <h3>Apprenti Technicien Système</h3>
@@ -256,6 +332,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Migrations d'applications métier, gestion du serveur ProFTPd</li>
         <li>Rédaction de documentation, préparation de postes</li>
       </ul>
+      <div class="stack"><span class="chip">Support N1/N2</span><span class="chip">ProFTPd</span><span class="chip">Documentation</span><span class="chip">Déploiement postes</span></div>
     </div>
     <div class="job">
       <h3>Web Designer</h3>
@@ -265,6 +342,7 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Création de bandeaux pour les portails de bibliothèques</li>
         <li>Mise à jour et maintenance de Drupal et des CMS des portails</li>
       </ul>
+      <div class="stack"><span class="chip">Drupal</span><span class="chip">CMS</span><span class="chip">Web design</span></div>
     </div>
     <div class="job">
       <h3>Développeur PHP · Technicien Informatique</h3>
@@ -274,10 +352,11 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Application PHP de gestion des adhérents d'une bibliothèque + manuel utilisateur</li>
         <li>Installation de postes, création de sites WordPress pour des mairies</li>
       </ul>
+      <div class="stack"><span class="chip">PHP</span><span class="chip">WordPress</span><span class="chip">MySQL</span></div>
     </div>
   </section>
 
-  <section class="panel rv">
+  <section id="formations" class="panel rv">
     <h2 data-scramble>Formations <span class="tag mono">//auth.keys</span></h2>
     <div class="chips">
       <span class="chip">Cycle d'ingénieur — Expert en Systèmes Informatiques · CFA Ingetis Évry · 2023</span>
@@ -296,22 +375,40 @@ body.mode-ats .fx-scan,body.mode-ats .fx-flicker,body.mode-ats .fx-vignette,body
         <li>Expérimentation et intégration de technologies connectées</li>
         <li>Veille technologique : nouvelles solutions systèmes & réseau</li>
       </ul>
+      <div style="margin-top:1.2rem">
+        <div class="tag mono" style="display:block;margin-bottom:.7rem">// CONNAISSANCE D'OUTILS OPEN SOURCE — survolez les catégories</div>
+        <div class="chips">
+          <span class="tool-wrap" data-tools="Proxmox VE · Proxmox Backup Server"><span class="chip tool-chip" tabindex="0">Virtualisation</span></span>
+          <span class="tool-wrap" data-tools="pfSense · Tailscale · Nginx Proxy Manager · AdGuard Home"><span class="chip tool-chip" tabindex="0">Réseau & VPN</span></span>
+          <span class="tool-wrap" data-tools="Docker · Portainer"><span class="chip tool-chip" tabindex="0">Conteneurisation</span></span>
+          <span class="tool-wrap" data-tools="Authentik (SSO) · Apache Guacamole · RustDesk"><span class="chip tool-chip" tabindex="0">Identité & accès distant</span></span>
+          <span class="tool-wrap" data-tools="Uptime Kuma · Beszel"><span class="chip tool-chip" tabindex="0">Supervision</span></span>
+          <span class="tool-wrap" data-tools="Home Assistant"><span class="chip tool-chip" tabindex="0">Domotique</span></span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <button class="proto-btn switch-btn" onclick="setMode('ats')" style="font-size:.75rem;padding:.6rem 1.2rem">↳ Format ATS</button>
+  <section id="contact" class="panel rv">
+    <h2 data-scramble>Contact <span class="tag mono">//uplink.init</span></h2>
+    <p style="font-size:1.08rem;line-height:1.7;margin-bottom:1.2rem">À la recherche d'un <b style="color:var(--cyan)">CDI en Administration Systèmes & Réseaux</b>. Disponible pour un entretien — contactez-moi.</p>
+    <div class="cta-row">
+      <a class="proto-btn" href="mailto:ghislain.samy@gmail.com">✉ ghislain.samy@gmail.com</a>
+      <a class="proto-btn red" href="https://fr.linkedin.com/in/ghislain-samy-884405150" target="_blank" rel="noopener">in · LinkedIn ↗</a>
+    </div>
+  </section>
 </main>
 
 <!-- ============ ATS ============ -->
 <div id="ats">
   <div class="ats-bar">
+    <a class="ats-btn" style="text-decoration:none;font-weight:bold" href="CV_Ghislain_SAMY.pdf" download>⬇ Télécharger PDF</a>
     <button class="ats-btn" onclick="window.print()">Imprimer / PDF</button>
-    <button class="ats-btn" onclick="setMode('net')">→ Format Netrunner</button>
   </div>
   <div class="ats-wrap">
     <h1>Ghislain Samy</h1>
     <div class="ats-role">Administrateur Systèmes & Réseaux</div>
-    <div class="ats-contact">Île-de-France · ghislain.samy@gmail.com</div>
+    <div class="ats-contact">Île-de-France · ghislain.samy@gmail.com · linkedin.com/in/ghislain-samy-884405150 · Permis B & A2</div>
 
     <h2>Profil</h2>
     <p>Administrateur Systèmes & Réseaux chez Atos. Spécialisé dans les environnements Linux (AlmaLinux, Debian, Ubuntu), l'administration réseau multi-constructeurs (Cisco, Fortinet, pfSense) et la virtualisation Proxmox. Plus de 5 ans de terrain, une exigence : des infrastructures fiables, documentées et maîtrisées. Veille et expérimentation continues au sein d'un environnement de lab personnel.</p>
@@ -413,10 +510,16 @@ const lines=[
   ["> protocoles ..................... ","[ATS] [NETRUNNER]","ok"]
 ];
 const log=document.getElementById('bootlog'),fill=document.getElementById('bootFill'),
-      access=document.getElementById('access'),title=document.getElementById('introTitle'),row=document.getElementById('protoRow');
+      access=document.getElementById('access'),title=document.getElementById('introTitle');
+const directATS=location.hash==='#ats';
 function finishIntro(){access.classList.add('granted');
-  setTimeout(()=>{title.classList.add('show');row.classList.add('show');},700);}
-if(reduced){
+  setTimeout(()=>{title.classList.add('show');},700);
+  setTimeout(()=>{setMode('net');},2000);}
+if(directATS){
+  // ouverture via le bouton blanc : ATS direct, sans intro
+  document.getElementById('jackin').classList.add('off');
+  document.body.classList.add('mode-ats');
+}else if(reduced){
   log.innerHTML=lines.map(l=>`<span>${l[0]}<b class="${l[2]}">${l[1]}</b></span>`).join('');
   fill.style.transform='scaleX(1)';finishIntro();
 }else{
@@ -464,6 +567,19 @@ const obs=new IntersectionObserver(es=>{
 },{threshold:.18});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
+/* ===== PULSATION BOUTON ATS (JS = garanti) ===== */
+const atsWrap=document.querySelector('.ats-btn-wrap'),atsBtn=document.querySelector('.ats-link');
+if(atsWrap&&atsBtn){
+  const a1=atsWrap.animate(
+    [{transform:'scale(1)'},{transform:'scale(1.09)'},{transform:'scale(1)'}],
+    {duration:1500,iterations:Infinity,easing:'ease-in-out'});
+  const a2=atsBtn.animate(
+    [{backgroundColor:'#ffffff'},{backgroundColor:'#5ef6ff'},{backgroundColor:'#ffffff'}],
+    {duration:1500,iterations:Infinity,easing:'ease-in-out'});
+  atsWrap.addEventListener('mouseenter',()=>{a1.pause();a2.pause();});
+  atsWrap.addEventListener('mouseleave',()=>{a1.play();a2.play();});
+}
+
 /* ===== MODE SWITCH ===== */
 function setMode(m){
   if(!reduced)glitchWipe();
@@ -471,6 +587,7 @@ function setMode(m){
     document.getElementById('jackin').classList.add('off');
     document.body.classList.remove('mode-net','mode-ats');
     document.body.classList.add(m==='net'?'mode-net':'mode-ats');
+    if(m==='net'&&location.hash)history.replaceState(null,'',location.pathname+location.search);
     window.scrollTo(0,0);
     if(m==='net'){
       document.querySelectorAll('.rv').forEach(el=>{el.classList.remove('in');obs.observe(el);});
